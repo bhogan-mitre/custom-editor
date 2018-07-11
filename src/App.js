@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import plotly from 'plotly.js/dist/plotly';
 import PlotlyEditor from 'react-chart-editor';
+import CustomEditor from './CustomEditor';
 import 'react-chart-editor/lib/react-chart-editor.css';
 
 const dataSources = {
@@ -39,7 +40,10 @@ class App extends Component {
           useResizeHandler
           debug
           advancedTraceTypeSelector
-        />
+        >
+            <CustomEditor />
+        </PlotlyEditor>
+
       </div>
     );
   }
