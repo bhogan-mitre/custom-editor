@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import plotly from 'plotly.js/dist/plotly';
 import PlotlyEditor from 'react-chart-editor';
 import CustomEditor from './CustomEditor';
+import {localizeString} from 'react-chart-editor/lib';
 import 'react-chart-editor/lib/react-chart-editor.css';
 
 const dataSources = {
@@ -20,7 +22,24 @@ const config = {editable: true};
 class App extends Component {
   constructor() {
     super();
-    this.state = {data: [], layout: {}, frames: []};
+    this.state = {
+      data: [
+        {
+          type: 'scatter',
+          x: dataSources.col1,
+          y: dataSources.col2,
+          marker: {color: dataSources.col3},
+        },
+      ],
+      layout: {},
+      frames: [],
+    };
+  }
+
+  getChildContext() {
+    return {
+      localize: key => localizeString({}, 'en', key),
+    };
   }
 
   render() {
@@ -48,5 +67,9 @@ class App extends Component {
     );
   }
 }
+
+App.childContextTypes = {
+  localize: PropTypes.func,
+};
 
 export default App;
