@@ -2,18 +2,17 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
   Radio,
-  TransformAccordion,
   TraceAccordion,
   DataSelector,
   Dropdown,
   PlotlySection,
+  connectAggregationToTransform,
 } from 'react-chart-editor';
 import {
   FilterOperation,
   FilterValue,
 } from 'react-chart-editor/lib/components';
-
-import {connectAggregationToTransform} from 'react-chart-editor';
+import TransformAccordion from './CustomTransformAccordion';
 
 const TRANSFORMABLE_TRACES = [
   'scatter',
@@ -26,7 +25,6 @@ const TRANSFORMABLE_TRACES = [
   'histogram',
   'histogram2d',
 ];
-
 
 const AggregationSection = connectAggregationToTransform(PlotlySection);
 
