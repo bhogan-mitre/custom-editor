@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import { PlotlyFold, PlotlyPanel, connectTransformToTrace } from 'react-chart-editor';
+import { PlotlyFold, PlotlyPanel, connectTransformToTrace, Info } from 'react-chart-editor';
 
 const TransformFold = connectTransformToTrace(PlotlyFold);
 
@@ -49,6 +49,15 @@ class TransformAccordion extends Component {
           canDelete={true}
         >
           {children}
+          {filteredTransforms[i].type === 'filter' ? (
+            <Info>This is a filter</Info>
+          ) : null}
+          {filteredTransforms[i].type === 'groupby' ? (
+            <Info>This is a split</Info>
+          ) : null}
+          {filteredTransforms[i].type === 'aggregate' ? (
+            <Info>This is an aggregate</Info>
+          ) : null}
         </TransformFold>
       ));
 
